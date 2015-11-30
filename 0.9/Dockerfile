@@ -1,11 +1,11 @@
-# VERSION 0.9.4
+# VERSION 0.9.5
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
 FROM portefaix/base:3.2
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV INFLUXDB_VERSION 0.9.4
+ENV INFLUXDB_VERSION 0.9.5
 ENV GOPATH /go
 
 ENV PRE_CREATE_DB **None**
