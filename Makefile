@@ -36,12 +36,12 @@ help:
 
 .PHONY: build
 build:
-	@echo -e "$(OK_COLOR)[$(app)] build $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(APP)] build $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
 	@$(DOCKER) build -t $(NAMESPACE)/$(IMAGE):${VERSION} $(version)
 
 .PHONY: run
 run:
-	@echo -e "$(OK_COLOR)[$(app)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(APP)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
 	@$(DOCKER) run --rm=true -p 9083:8083 -p 9086:8086 -p 9090:8090 -p 9099:8099 $(NAMESPACE)/$(IMAGE):$(VERSION)
 
 .PHONY: login
