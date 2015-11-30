@@ -1,23 +1,25 @@
 # Portefaix Grafana
 
-![logo](http://pkgs.alpinelinux.org/assets/alpinelinux-logo.svg)
+[![Circle CI](https://circleci.com/gh/portefaix/docker-influxdb.svg?style=svg)](https://circleci.com/gh/portefaix/docker-influxdb)
+
+![logo](https://raw.githubusercontent.com/1science/docker-alpine/latest/logo.png)
 
 [Alpine Linux][] is a Linux distribution built around musl libc and BusyBox.
 This image is based on the official Alpine Linux.
 
 [InfluxDB][] is an open-source distributed time series database.
 
-Ports exported are : `8083`, `8086`, `8090` and `8099`.
+Ports exported are : `8083` and `8086`.
 
-Volumes exported are : `/var/lib/influxdb`.
+Volumes exported are : `/data`.
 
 ## Usage
 
-    $ docker run --rm=true -it -p 3000:3000 portefaix/influxdb
+    $ docker run --rm=true -it -p 8083:8083 -p 8086:8086 portefaix/influxdb:0.9.4
 
 ## Supported tags
 
-- `0.9.3`
+- `0.9.4` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.4.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.4 'imagelayers.io')
 
 ## License
 
