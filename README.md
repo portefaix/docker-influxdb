@@ -1,6 +1,10 @@
 # Portefaix Grafana
 
-[![Circle CI](https://circleci.com/gh/portefaix/docker-influxdb.svg?style=svg)](https://circleci.com/gh/portefaix/docker-influxdb)
+* Master :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-influxdb/tree/master.svg?style=svg)](https://circleci.com/gh/portefaix/docker-influxdb/tree/master)
+
+* Develop :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-influxdb/tree/develop.svg?style=svg)](https://circleci.com/gh/portefaix/docker-influxdb/tree/develop)
 
 ![logo](https://raw.githubusercontent.com/1science/docker-alpine/latest/logo.png)
 
