@@ -1,11 +1,11 @@
-# VERSION 0.9.5
+# VERSION 0.9.6
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
-# DESCRIPTION:    portefaix/grafana
+# DESCRIPTION:    portefaix/influxdb
 
 FROM portefaix/base:3.2
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV INFLUXDB_VERSION 0.9.5
+ENV INFLUXDB_VERSION 0.9.6
 ENV GOPATH /go
 
 ENV PRE_CREATE_DB **None**
@@ -14,8 +14,8 @@ ENV SSL_CERT **None**
 
 RUN apk add --update build-base curl go git mercurial ca-certificates
 
-RUN mkdir -p ${GOPATH}/src/github.com/influxdb && cd ${GOPATH}/src/github.com/influxdb && \
-    git clone https://github.com/influxdb/influxdb.git && \
+RUN mkdir -p ${GOPATH}/src/github.com/influxdata && cd ${GOPATH}/src/github.com/influxdata && \
+    git clone https://github.com/influxdata/influxdb.git && \
     go get -u -f -t ./... && \
     go build -ldflags="-X main.version=v${INFLUXDB_VERSION} -X main.branch=master -X main.commit=`cd influxdb && git rev-parse HEAD`" ./... && \
     go install ./... && \
