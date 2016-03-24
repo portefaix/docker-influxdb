@@ -23,6 +23,9 @@ Volumes exported are : `/data`.
 
 ## Supported tags
 
+- `0.11.0` [![](https://badge.imagelayers.io/portefaix/influxdb:0.11.0.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.11.0 'imagelayers.io')
+- `0.10.0` [![](https://badge.imagelayers.io/portefaix/influxdb:0.10.0.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.10.0 'imagelayers.io')
+- `0.9.6` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.6.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.6 'imagelayers.io')
 - `0.9.5` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.5.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.5 'imagelayers.io')
 - `0.9.4` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.4.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.4 'imagelayers.io')
 
