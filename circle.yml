@@ -13,12 +13,16 @@ dependencies:
   override:
     - docker info
     - docker build -t portefaix/influxdb:0.9 0.9
+    - docker build -t portefaix/influxdb:0.11 0.11
 
 test:
   override:
-    - docker run -d -p 8083:8083 -p 8086:8086 portefaix/influxdb:0.9; sleep 90
-    - curl --retry 10 --retry-delay 5 -v http://localhost:8083
-    - curl --retry 10 --retry-delay 5 -v http://localhost:8086
+    - docker run -d -p 8183:8083 -p 8186:8086 portefaix/influxdb:0.9; sleep 40
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8183
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8186
+    - docker run -d -p 8283:8083 -p 8286:8086 portefaix/influxdb:0.11; sleep 40
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8283
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8286
 
 #deployment:
 #  hub: 
