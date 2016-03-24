@@ -1,11 +1,11 @@
-# VERSION 0.9.6
+# VERSION 0.11.0
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/influxdb
 
-FROM portefaix/base:3.2
+FROM portefaix/base:3.3
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV INFLUXDB_VERSION 0.9.6
+ENV INFLUXDB_VERSION 0.11.0
 ENV GOPATH /go
 
 ENV PRE_CREATE_DB **None**
