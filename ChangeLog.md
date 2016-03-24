@@ -4,6 +4,7 @@ ChangeLog
 # Version 0.3.0 (03/24/2015)
 
 - Add InfluxDB 0.11.0
+- Add InfluxDB 0.10.0
 
 # Version 0.2.0 (11/30/2015)
 
