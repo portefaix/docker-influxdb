@@ -1,4 +1,4 @@
-# VERSION 0.10.0
+# VERSION 0.10.0.1
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/influxdb
 
@@ -27,7 +27,7 @@ RUN mkdir -p ${GOPATH}/src/github.com/influxdata && cd ${GOPATH}/src/github.com/
 ADD ./config.toml /usr/share/influxdb/config.toml
 # ADD ./influxdb.sh /usr/share/influxdb/influxdb.sh
 
-VOLUME ["/data"]
+VOLUME ["/var/lib/influxdb/data"]
 
 EXPOSE 8083
 EXPOSE 8086
