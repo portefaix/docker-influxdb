@@ -15,19 +15,17 @@ This image is based on the official Alpine Linux.
 
 Ports exported are : `8083` and `8086`.
 
-Volumes exported are : `/data`.
+Volume exported is : `/var/lib/influxdb`.
 
 ## Usage
 
-    $ docker run --rm=true -it -p 8083:8083 -p 8086:8086 portefaix/influxdb:0.9.4
+    $ docker run --rm=true -it -p 8083:8083 -p 8086:8086 portefaix/influxdb:0.9.6.1
 
 ## Supported tags
 
-- `0.11.0` [![](https://badge.imagelayers.io/portefaix/influxdb:0.11.0.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.11.0 'imagelayers.io')
-- `0.10.0` [![](https://badge.imagelayers.io/portefaix/influxdb:0.10.0.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.10.0 'imagelayers.io')
-- `0.9.6` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.6.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.6 'imagelayers.io')
-- `0.9.5` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.5.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.5 'imagelayers.io')
-- `0.9.4` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.4.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.4 'imagelayers.io')
+- `0.11.0.1` [![](https://badge.imagelayers.io/portefaix/influxdb:0.11.0.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.11.0.1 'imagelayers.io')
+- `0.10.3.1` [![](https://badge.imagelayers.io/portefaix/influxdb:0.10.3.1.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.10.3.1 'imagelayers.io')
+- `0.9.6.1` [![](https://badge.imagelayers.io/portefaix/influxdb:0.9.6.1.svg)](https://imagelayers.io/?images=portefaix/influxdb:0.9.6.1 'imagelayers.io')
 
 ## License
 
