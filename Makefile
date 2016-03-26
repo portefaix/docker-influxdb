@@ -43,7 +43,12 @@ build:
 .PHONY: run
 run:
 	@echo -e "$(OK_COLOR)[$(APP)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
-	@$(DOCKER) run --rm=true -p 8083:8083 -p 8086:8086 -p 8090:8090 -p 8099:8099 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION)
+	@$(DOCKER) run --rm=true -p 8083:8083 -p 8086:8086 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION)
+
+.PHONY: debug
+debug:
+	@echo -e "$(OK_COLOR)[$(APP)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
+	@$(DOCKER) run -it --rm=true -p 8083:8083 -p 8086:8086 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION) /bin/bash
 
 .PHONY: login
 login:

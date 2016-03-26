@@ -1,39 +1,38 @@
-# VERSION 0.9.6
+# VERSION 0.9.6.1
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/influxdb
 
-FROM portefaix/base:3.2
+FROM portefaix/base:3.3
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV INFLUXDB_VERSION 0.9.6
-ENV GOPATH /go
+ENV INFLUXDB_VERSION=0.9.6.1
+ENV GLIBC_VERSION=2.23-r1
+ENV INFLUXDB_FILE=influxdb_${INFLUXDB_VERSION}_x86_64
+ENV GLIBC_FILE=glibc-${GLIBC_VERSION}.apk
 
-ENV PRE_CREATE_DB **None**
-ENV SSL_SUPPORT **False**
-ENV SSL_CERT **None**
+WORKDIR /tmp
 
-RUN apk add --update build-base curl go git mercurial ca-certificates
+RUN addgroup -S influxdb && adduser -S -G influxdb influxdb \
+    && apk add --update curl openssl \
+    && curl -Ls https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${GLIBC_FILE} > /tmp/${GLIBC_FILE} \
+    && apk add --allow-untrusted /tmp/${GLIBC_FILE} \
+    && curl -Ls https://influxdb.s3.amazonaws.com/$INFLUXDB_FILE.tar.gz > /tmp/$INFLUXDB_FILE.tar.gz \
+    && tar xvfz $INFLUXDB_FILE.tar.gz \
+    && rm /tmp/$INFLUXDB_FILE.tar.gz \
+    && cp /tmp/influxdb_${INFLUXDB_VERSION}_x86_64/usr/bin/* /usr/bin \
+    && cp -r /tmp/influxdb_${INFLUXDB_VERSION}_x86_64/etc/influxdb /etc \
+    && echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf \
+    && mkdir /var/lib/influxdb/ \
+    && chown influxdb.influxdb /var/lib/influxdb/ \
+    && apk del curl \
+    && rm -rf /tmp/* /var/cache/apk/*
 
-RUN mkdir -p ${GOPATH}/src/github.com/influxdata && cd ${GOPATH}/src/github.com/influxdata && \
-    git clone https://github.com/influxdata/influxdb.git && \
-    go get -u -f -t ./... && \
-    go build -ldflags="-X main.version=v${INFLUXDB_VERSION} -X main.branch=master -X main.commit=`cd influxdb && git rev-parse HEAD`" ./... && \
-    go install ./... && \
-    cp $GOPATH/bin/* /usr/local/bin && \
-    go clean -i -r && \
-    apk del --purge build-base go git mercurial && \
-    rm -rf ${GOPATH} /tmp/* /var/cache/apk/* /root/.n*
+ADD config.toml /etc/influxdb.toml
 
-ADD ./config.toml /usr/share/influxdb/config.toml
-# ADD ./influxdb.sh /usr/share/influxdb/influxdb.sh
+USER influxdb
 
-VOLUME ["/data"]
+WORKDIR /var/lib/influxdb
 
-EXPOSE 8083
-EXPOSE 8086
-# Raft port (for clustering, don't expose)
-# EXPOSE 8090
-# Protobuf port (flor clustering, don't expose)
-# EXPOSE 8099
+EXPOSE 8088 8091 8083 8086
 
-CMD ["/usr/local/bin/influxd", "-config", "/usr/share/influxdb/config.toml"]
+CMD ["/usr/bin/influxd", "-config", "/etc/influxdb.toml"]

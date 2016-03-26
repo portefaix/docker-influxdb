@@ -1,6 +1,10 @@
 ChangeLog
 ==============
 
+# Version 1.0.0 (03/26/2016)
+
+- Use the binaries from InfluxData
+
 # Version 0.3.0 (03/24/2016)
 
 - Add InfluxDB 0.11.0
